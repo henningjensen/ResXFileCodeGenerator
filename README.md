@@ -1,3 +1,13 @@
+# 2025-02-06 - Project forked and patched
+
+Patched the generator to build classes without a static CultureInfo object. We needed to access various resource text with different translations for each incoming http request. The original implementation uses CurrentUIThread.CultureInfo which is not thread safe at all when we need to change the CultureInfo according to the incoming http request parameters.
+
+**NOTE:** this project must be included as a nuget package. We tried to include it directly in the solution, but failed to do this successfully. Unknown what caused issues, but the generator did not create correct files. It works great when included as a nuget package.
+
+--
+Henning Jensen, henning_AT_arkitektum.no
+
+
 # ResXFileCodeGenerator
 ResX Designer Source Generator. Generates strongly-typed resource classes for looking up localized strings.
 
