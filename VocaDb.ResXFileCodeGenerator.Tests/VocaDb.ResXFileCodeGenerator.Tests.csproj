@@ -34,6 +34,8 @@
 	  </EmbeddedResource>
     <EmbeddedResource Update="IntegrationTests\Test2.resx">
 	    <UseVocaDbResManager>true</UseVocaDbResManager>
+			<StaticMembers>false</StaticMembers>
+			<StaticClass>false</StaticClass>
     </EmbeddedResource>
   </ItemGroup>
 

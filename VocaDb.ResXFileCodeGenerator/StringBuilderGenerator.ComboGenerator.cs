@@ -58,9 +58,17 @@ namespace VocaDb.ResXFileCodeGenerator
 				builder.Append(name);
 			}
 
+			// PATCH custom cultureInfo handling
+			builder.Append(", CultureInfo currentCulture");
+			builder.Append(") => ");
+			builder.AppendLineLF("currentCulture.LCID switch");
+			/*
+			 // OLD CODE - not thread safe!, uses static variable CurrentUICulture
 			builder.Append(") => ");
 			builder.Append(Constants.SystemGlobalization);
 			builder.AppendLineLF(".CultureInfo.CurrentUICulture.LCID switch");
+			*/
+
 			builder.AppendLineLF("    {");
 			var already = new HashSet<int>();
 			foreach (var (name, lcid, _) in definedLanguages)
@@ -175,6 +183,9 @@ namespace VocaDb.ResXFileCodeGenerator
 						langValue = value;
 					builder.Append(SymbolDisplay.FormatLiteral(langValue, true));
 				}
+
+				// PATCH custom cultureInfo handling
+				builder.Append(", currentCulture");
 
 				builder.AppendLineLF(");");
 			}

@@ -21,18 +21,14 @@ public class TestResxFiles
 		Test1.CreateDate.Should().Be("OldestDaDK");
 	}
 	[Fact]
-	public void TestCodeGenResourceGen()
+	public void TestCodeGenResourceGenWithGivenCultureInfo()
 	{
-		Thread.CurrentThread.CurrentUICulture = new CultureInfo("da");
-		Test2.CreateDate.Should().Be("OldestDa");
-		Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
-		Test2.CreateDate.Should().Be("Oldest");
-		Thread.CurrentThread.CurrentUICulture = new CultureInfo("ch");
-		Test2.CreateDate.Should().Be("Oldest");
-		Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-us");
-		Test2.CreateDate.Should().Be("OldestEnUs");
-		Thread.CurrentThread.CurrentUICulture = new CultureInfo("da-DK");
-		Test2.CreateDate.Should().Be("OldestDaDK");
+
+		new Test2(new CultureInfo("da")).CreateDate.Should().Be("OldestDa");
+		new Test2(new CultureInfo("en")).CreateDate.Should().Be("Oldest");
+		new Test2(new CultureInfo("ch")).CreateDate.Should().Be("Oldest");
+		new Test2(new CultureInfo("en-us")).CreateDate.Should().Be("OldestEnUs");
+		new Test2(new CultureInfo("da-DK")).CreateDate.Should().Be("OldestDaDK");
 	}
 
 }

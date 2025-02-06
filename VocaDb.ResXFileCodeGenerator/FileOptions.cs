@@ -1,14 +1,14 @@
-﻿using Microsoft.CodeAnalysis.Diagnostics;
+using Microsoft.CodeAnalysis.Diagnostics;
 
 namespace VocaDb.ResXFileCodeGenerator;
 
-public readonly record struct FileOptions 
+public readonly record struct FileOptions
 {
 	public string InnerClassInstanceName { get; init; }
 	public string InnerClassName { get; init; }
 	public InnerClassVisibility InnerClassVisibility { get; init; }
 	public bool PartialClass { get; init; }
-	public bool StaticMembers { get; init; } = true;
+	public bool StaticMembers { get; init; } = false;
 	public GroupedAdditionalFile GroupedFile { get; init; }
 	public bool StaticClass { get; init; }
 	public bool NullForgivingOperators { get; init; }
